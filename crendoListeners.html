@@ -1,0 +1,21 @@
+<p>No handler here.</p>
+
+<button>Click me</button>
+
+<p>No handler here.</p>
+
+<script>
+  let button = document.querySelector("button");
+  let parrafo = document.querySelector("p");
+
+  const oneClick = () => 
+  {
+   console.log('click una vez')
+   button.removeEventListener('click',oneClick)
+  }
+  
+  button.addEventListener("click", oneClick)
+  parrafo.addEventListener("click", () => {
+    console.log("parrafo");
+  });
+</script>

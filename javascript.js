@@ -286,7 +286,7 @@ let Juan = {
         return year - this.birthYear
     }
 }
-*/
+
 //Ejercicio-4 Cuarta Seccion
 // List
 let singers = [
@@ -329,3 +329,311 @@ let singers = [
       return genero
   }
 console.log(Addgenero(singersGenero));
+
+//Ejercicio-1 Quinta Seccion
+//Programacion orientada a objetos
+
+let juan = {name: 'juan', birthyear: 1990, job:'Developer'}
+let pedro = {name: 'pedro', birthyear: 1995, job:'Developer'}
+let jose = {name: 'jose', birthyear: 1989, job:'Developer'}
+
+
+//constructor
+let Persona = function(name,birthyear,job)
+
+{
+    this.name = name;
+    this.birthyear = birthyear;
+    this.job = job;
+}
+
+let juan = new Persona('juan',1990,'Developer')
+let pedro = new Persona('pedro',1995,'Contador')
+let jose = new Persona('jose',1992,'Maestro')
+console.log(juan,pedro,jose)
+
+//Ejercicio-2 Quinta Seccion
+//Vector
+var Vec = function(x, y) 
+{
+    this.x = x;
+    this.y = y;
+}
+Vec.prototype.plus = function(otrovec)
+{
+  return new Vec(this.x + otrovec.x, this.y + otrovec.y);
+}
+Vec.prototype.minus = function(otrovec)
+{
+  return new Vec(this.x - otrovec.x, this.y - otrovec.y);
+}
+Vec.prototype.length = function()
+{
+  return Math.sqrt(this.x * this.x + this.y * this.y);
+}
+  
+  var vec1 = new Vec(1, 2);
+  var vec2 = new Vec(2, 3);
+
+  console.log(vec1.plus(vec2)); // Vec { x: 3, y: 5 }
+  console.log(vec1.minus(vec2)); // Vec { x: -1, y: -1 }
+  console.log(vec1.length()); // 2.23606797749979
+
+ //Ejercicio-3 Quinta Seccion
+//
+let Persona = function(name)
+
+{
+    this.name = name;
+}
+
+let Developer = function (name,skills, YearsofExperience)
+
+{
+    Persona.call(this, name)
+    this.skills = skills;
+    this.YearsofExperience = YearsofExperience;
+}
+
+let juan = new Developer('Juan', 'Javascript', 10)
+console.log(juan);
+
+//Ejercicio-3 Quinta Seccion
+//
+let Group = function() 
+{
+    this.list = []
+}
+Group.prototype.has = function(num)
+{
+    return this.list.includes(num)
+}
+Group.prototype.add = function(num)
+{
+    if(!this.has(num))
+    {
+    this.list.push(num)
+    }
+}
+Group.from = function(arr)
+{
+    let grupo = new Group();
+    for (let i = 0; i < arr.length; i++)
+    {
+      grupo.add(arr[i])
+    }
+    return grupo
+}
+  let group = Group.from([1, 2, 3, 4, 5]);
+  console.log(group); // Group { members: [ 1, 2, 3, 4, 5 ] }
+  console.log(group.has(5)); // true
+  console.log(group.has(10)); // false
+  group.add(10);
+  console.log(group.has(10)); // true
+
+//Ejercicio-4 Quinta Seccion
+//
+let Persona = function(name,birthyear,job)
+{
+    this.name = name;
+    this.birthyear = birthyear;
+    this.job = job;
+}
+ Persona.prototype.calculateAge = function()
+ {
+     let today = new Date();
+     let year = today.getFullYear();
+     console.log(year - this.birthyear)
+ }
+let juan = new Persona('juan',1990,'Developer')
+let pedro = new Persona('pedro',1995,'Contador')
+let jose = new Persona('jose',1992,'Maestro')
+juan.calculateAge();
+
+console.log(juan,pedro,jose);
+
+//Ejercicio-5 Quinta Seccion
+//
+var Triangle = function(a, b, c) 
+{
+  this.a = a
+  this.b = b
+  this.c = c
+}
+Triangle.prototype.getPerimeter = function()
+{
+    let perimetro = (this.a+this.b+this.c)
+    return perimetro
+    console.log(perimetro)
+}
+
+  var triangle = new Triangle(1, 2, 3);
+  console.log(triangle); // Triangle { a: 1, b: 2, c: 3 }
+  console.log(triangle.getPerimeter()); // 6
+
+//Ejercicio-1 Seis Seccion
+//
+let numbers = [1, 2, 3, 4, 5];
+let doubles = [];
+
+for(var i = 0; i < numbers.length; i++) {
+  doubles.push(numbers[i] * 2);
+}
+
+console.log(numbers); // [1, 2, 3, 4, 5]
+console.log(doubles); // [2, 4, 6, 8, 10]
+
+//Ejercicio-2 Seis Seccion
+//
+let car =
+{
+    brand: 'Nissan',
+    model: 'Sentra',
+    year: 2020
+}
+console.log('Antes', car);
+function addColor(auto)
+{
+    let nuevoCarro = Object.assign({}, auto,{color: 'Negro'})
+    return nuevoCarro
+}
+let mismoCarro = addColor(car)
+console.log('Despues', mismoCarro);
+console.log('Este es el mimo', '',car === mismoCarro);
+
+//Ejercicio-3 Seis Seccion
+//
+let conejo =
+{
+    orejas: 2,
+    color: 'blanco',
+    tamaño: 'mediano',
+    herbivoro: true
+}
+console.log('Descripcion', conejo);
+function addMamifero(animal)
+{
+    return {...animal, mamifero: true}
+    //let mamifero = Object.assign({}, animal,{mamifero: true})
+    //return mamifero
+}
+let esMamifero = addMamifero(conejo)
+console.log('Es mamifero', esMamifero);
+console.log('Son igual', conejo === esMamifero);
+
+//Ejercicio-4 Seis Seccion
+//
+let cart = 
+  [
+    {
+      item: 'Laptop',
+      quantity: 1
+    }
+  ]
+function addItemtoCar(cart,item, quantity)
+{
+    let newCar = cart.map(Element => Element)
+    newCar.push({item: item, quantity: quantity})
+    return newCar
+}
+ cart = addItemtoCar(cart, 'Phone', 1);
+ console.log('segunda compra, ',cart);
+
+ cart = addItemtoCar(cart, 'Book', 3);
+ console.log('tercera compra, ',cart);
+ 
+//Ejercicio-5 Seis Seccion
+// funciones de primera clase o alto orden
+let numbers = [1, 2, 3, 4, 5];
+
+// let doubles = [];
+// for(let i = 0; i < numbers.length; i++) {
+// 	doubles.push(numbers[i] * 2);
+// }
+
+let doubles = numbers.map(number => number * 2)
+let numerosImpares = numbers.filter(number => number % 2 !== 0)
+let numerosPares = numbers.filter(number => number % 2 === 0)
+let numerosMayor3 = numbers.filter(number => number > 3)
+
+console.log(numbers); // [1, 2, 3, 4, 5]
+console.log(doubles); // [2, 4, 6, 8, 10]
+console.log(numerosImpares);
+console.log(numerosPares);
+console.log(numerosMayor3);
+
+//Ejercicio-6 Seis Seccion
+// convertir de numeros a arrays y colocarlo en array con sus separaciones
+let number = 12345;
+
+//let string = number.toString();
+//let array = string.split('');
+
+//let array = number.toString().split('')
+//let arrayOfNumbers = array.map(function(number){
+//    return Number(number)
+//})
+
+//let suma = arrayOfNumbers.reduce(function(acum, elem){
+//},0)
+
+function sumaDigitos(number)
+{
+    return number
+    .toString()
+    .split()
+    .map(number)
+    .reduce(function(acum, elem){
+        return acum + elem;
+    },0)
+}
+
+console.log('suma', sumaDigitos(number));
+
+//Ejercicio-6 Seis Seccion
+// sumar un array con varios arrays en uno
+function flatten(arrays) 
+  {
+      return arrays.reduce(function(acum, elem){
+      return acum.concat(elem)
+      },[])
+  }
+
+  let arrays = [[1, 2, 3], [4, 5], [6]];
+  let array = flatten(arrays);
+  console.log(array); // [1, 2, 3, 4, 5, 6]
+
+//Ejercicio-7 Seis Seccion
+//regresa los elementos verdaderos
+function compact(array) 
+  {
+      return array.filter(elem => !!elem)
+  }
+  let array = [0, 1, false, 2, '', 3];
+  let compactedArray = compact(array);
+  console.log(compactedArray); // [1, 2, 3]
+
+//Ejercicio-8 Seis Seccion
+//Crear una función de alto orden loop que será similar a un for. Recibe value, una función test, una función update y una función body. En cada iteración se debe ejecutar la función test y terminar el ciclo si la función retorna false. Después se ejecuta la función body dándole como argumento el value actual. Por último se ejecuta la función update para crear un nuevo valor y se repite el proceso.
+
+function loop(start, test, update, body) 
+  {
+    for(let value = start; test(value); value = update(value))
+    {
+        body(value)
+    }
+  }
+  let test = function(n) {
+    return n > 0;
+  }
+  let update = function(n) {
+    return n - 1;
+  }
+  loop(3, test, update, console.log);
+  // 3
+  // 2
+  // 1
+  */
+  //Ejercicio-8 Seis Seccion
+  //
+  
